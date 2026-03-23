@@ -22,10 +22,18 @@ export function atomCount(ctx: QueryContext) {
 
 export function countQuery(query: StructureQuery) {
     return (ctx: QueryContext) => {
-        const sel = query(ctx);
+        const { currentStructure } = ctx;
+        if (!currentStructure) {
+            const sel = query(ctx);
+            return StructureSelection.structureCount(sel);
+        }
+        const tempCtx = new QueryContext(currentStructure, { currentSelection: ctx.currentSelection });
+        tempCtx.currentStructure = currentStructure;
+        const sel = query(tempCtx);
         return StructureSelection.structureCount(sel);
     };
 }
+
 
 export function propertySet(prop: QueryFn<any>) {
     return (ctx: QueryContext) => {
@@ -33,4 +41,3 @@ export function propertySet(prop: QueryFn<any>) {
         return getCurrentStructureProperties(ctx, prop, set);
     };
 }
-
