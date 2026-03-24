@@ -3,6 +3,7 @@
  *
  * @author David Sehnal <david.sehnal@gmail.com>
  * @author Alexander Rose <alexander.rose@weirdbyte.de>
+ * @author Zhonghua Wang <zhonghua.wang@outlook.com>
  */
 
 import { UniqueArray } from '../../../mol-data/generic/unique-array';
@@ -259,10 +260,6 @@ export const SymbolTable = [
 
             Alias(MolScript.structureQuery.atomProperty.ihm.hasSeqId, 'atom.ihm.has-seq-id'),
             Alias(MolScript.structureQuery.atomProperty.ihm.overlapsSeqIdRange, 'atom.ihm.overlaps-seq-id-range'),
-
-            // Macro(MSymbol('atom.sec-struct.is', Arguments.List(Struct.Types.SecondaryStructureFlag), Type.Bool,
-            //     `Test if the current atom is part of an secondary structure. Optionally specify allowed sec. struct. types: ${Type.oneOfValues(Struct.Types.SecondaryStructureFlag).join(', ')}`),
-            // args => B.core.flags.hasAny([B.struct.atomProperty.macromolecular.secondaryStructureFlags(), B.struct.type.secondaryStructureFlags(args)])),
         ],
         [
             'Bond Properties',

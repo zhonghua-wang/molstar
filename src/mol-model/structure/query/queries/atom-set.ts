@@ -7,6 +7,7 @@
  * Copyright (c) 2017 MolQL contributors, licensed under MIT, See LICENSE file for more info.
  *
  * @author David Sehnal <david.sehnal@gmail.com>
+ * @author Zhonghua Wang <zhonghua.wang@outlook.com>
  */
 
 import { StructureQuery } from '../query';
@@ -27,6 +28,7 @@ export function countQuery(query: StructureQuery) {
             const sel = query(ctx);
             return StructureSelection.structureCount(sel);
         }
+        // create an isolated temporary context to evaluate the query
         const tempCtx = new QueryContext(currentStructure, { currentSelection: ctx.currentSelection });
         tempCtx.currentStructure = currentStructure;
         const sel = query(tempCtx);
